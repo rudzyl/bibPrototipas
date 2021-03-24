@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
+
+    public function bookAuthor()  //funkcijos vardas nieko nereiskia
+    {
+        return $this->belongsTo(Author::class, 'author_id', 'id');
+    }
+ 
 }
