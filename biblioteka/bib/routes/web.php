@@ -19,14 +19,10 @@ use App\Http\Controllers\BookController;
 Route::get('/', function () {
     return view('welcome');
 });
+Auth::routes();
 
-Route::get('vartai', function () {
-    return 'mano biblioteka';
-});
-// Route::get('kelias', [BibliotekaController::class, 'index']);
-// Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['prefix' => 'authors'], function(){
     Route::get('', [AuthorController::class, 'index'])->name('author.index');
     Route::get('create', [AuthorController::class, 'create'])->name('author.create');
