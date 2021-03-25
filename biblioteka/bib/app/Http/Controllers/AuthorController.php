@@ -41,6 +41,8 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
+
+        
         $author = new Author;
         $author->name = $request->author_name;
         $author->surname = $request->author_surname;

@@ -10942,4 +10942,14 @@ a.text-dark:focus {
   }
 }
 
+.list-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-line .list-line_button {
+  display: flex;
+  margin-left: 5px;
+}
+
 
