@@ -10952,4 +10952,10 @@ a.text-dark:focus {
   margin-left: 5px;
 }
 
+.list-line .list-line_name {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
 

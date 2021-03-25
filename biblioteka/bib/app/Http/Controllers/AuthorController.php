@@ -41,13 +41,9 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-
-        
-        $author = new Author;
-        $author->name = $request->author_name;
-        $author->surname = $request->author_surname;
-        $author->save();
-        return redirect()->route('author.index');
+        Author::create($request);
+        return redirect()->
+        route('author.index')->with('success_message', 'Sekmingai įrašytas.');
     }
 
     /**
@@ -96,9 +92,9 @@ class AuthorController extends Controller
     public function destroy(Author $author)
     {
         if($author->authorBooks->count()){
-            return 'Trinti negalima, nes turi knygų';
+            return redirect()->back()->with('info_message', 'Autorius turi knygu, negalima istrinti.');
         }
         $author->delete();
-        return redirect()->route('author.index');
+        return redirect()->route('author.index')->with('info_message', 'Sekmingai ištrintas.');
     }
 }
