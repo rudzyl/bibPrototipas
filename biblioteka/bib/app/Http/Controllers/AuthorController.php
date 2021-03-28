@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Validator;
 
 class AuthorController extends Controller
 {
@@ -17,9 +18,21 @@ class AuthorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       $authors = Author::all();
+        // $authors = $request->sort ? Author::orderBy('surname')->get() : Author::all();
+        if ('name' == $request->sort) {
+            $authors = Author::orderBy('name')->get();
+        }
+        if ('surname' == $request->sort) {
+            $authors = Author::orderBy('surname')->get();
+        } 
+        else {
+            $authors = Author::all();
+        }
+    //    $authors = Author::all();
+        // $authors = Author::orderBy('surname')->get();
+
        return view('author.index', ['authors' => $authors]);
     }
 
@@ -41,7 +54,23 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        Author::create($request);
+        $validator = Validator::make(
+            $request->all(), //argumentas nr 1
+        [
+            'author_name' => ['required', 'min:3', 'max:64'], //argumentas nr 2
+            'author_surname' => ['required', 'min:3', 'max:64'],
+        ],
+          [
+          'author_surname.required' => 'ideti pavarde', //argumentas nr 3
+          'author_surname.min' => 'per trumpa pavarde'
+          ]
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+        // Author::create($request);
+        Author::new()->refreshAndSave($request);
         return redirect()->
         route('author.index')->with('success_message', 'Sekmingai įrašytas.');
     }
@@ -77,9 +106,23 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        $author->name = $request->author_name;
-        $author->surname = $request->author_surname;
-        $author->save();
+        $validator = Validator::make(
+            $request->all(), //argumentas nr 1
+        [
+            'author_name' => ['required', 'min:3', 'max:64'], //argumentas nr 2
+            'author_surname' => ['required', 'min:3', 'max:64'],
+        ],
+          [
+          'author_surname.required' => 'ideti pavarde', //argumentas nr 3
+          'author_surname.min' => 'per trumpa pavarde'
+          ]
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+        // $author->edit($request);
+        $author->refreshAndSave($request);
         return redirect()->route('author.index');
     }
 
