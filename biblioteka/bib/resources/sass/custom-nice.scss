@@ -16,3 +16,25 @@
 
     }
 }
+
+.make-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &.column {
+        flex-direction: column;
+        height: 37px;
+        justify-content: center;
+    }
+
+    select,
+    label,
+    input {
+        margin: 0 6px;
+    }
+
+    &.form-group {
+        margin-bottom: 0px;
+    }
+}

@@ -5,7 +5,29 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">KNYGOS</div>
+                <div class="card-header">
+                    <h2> KNYGOS </h2>
+                    <div class="make-inline">
+                        <form action="{{route('book.index')}}" method="get" class="make-inline">
+                            <div class="form-group" class="make-inline">
+                                <label>Autorius: </label>
+                                <select class="form-control" name="author_id">
+                                    <option value="0" disabled @if($filterBy==0) selected @endif> Pasirinkti autoriu</option>
+                                    @foreach ($authors as $author)
+                                    <option value="{{$author->id}}" @if($filterBy==$author->id) selected @endif>
+                                        {{$author->name}} {{$author->surname}}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                <small class="form-text text-muted">Pasirinkti Autoriaus varda.</small>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Filtruoti</button>
+                            <div class="form-group" class="make-inline">
+                                <input </div>
+                        </form>
+                        <a href="{{route('book.index')}}" class="btn btn-info">isvalyti filtra</a>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     <ul class="list-group">
