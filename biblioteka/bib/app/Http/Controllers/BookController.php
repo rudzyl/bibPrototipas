@@ -17,10 +17,22 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $books = Book::all();
-       return view('book.index', ['books' => $books]);
+        $authors = Author::all();
+        //filtravimo dalis 
+        if($request->author_id) {
+            $books = Book::where('author_id', $request->author_id)->get();
+            $filterBy = $request->author_id;
+        }
+        else {
+            $books = Book::all();
+        }
+        return view('book.index', [
+            'books' => $books, 
+            'authors' => $authors,
+            'filterBy'=>$filterBy ?? 0
+            ]);
     }
 
     /**
@@ -60,7 +72,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return view('book.show', ['book' => $book]);
     }
 
     /**

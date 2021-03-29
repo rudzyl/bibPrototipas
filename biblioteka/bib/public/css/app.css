@@ -10958,4 +10958,26 @@ a.text-dark:focus {
   flex-direction: column;
 }
 
+.make-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.make-inline.column {
+  flex-direction: column;
+  height: 37px;
+  justify-content: center;
+}
+
+.make-inline select,
+.make-inline label,
+.make-inline input {
+  margin: 0 6px;
+}
+
+.make-inline.form-group {
+  margin-bottom: 0px;
+}
+
 

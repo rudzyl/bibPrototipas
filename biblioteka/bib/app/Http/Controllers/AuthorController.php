@@ -24,7 +24,7 @@ class AuthorController extends Controller
         if ('name' == $request->sort) {
             $authors = Author::orderBy('name')->get();
         }
-        if ('surname' == $request->sort) {
+        else if ('surname' == $request->sort) {
             $authors = Author::orderBy('surname')->get();
         } 
         else {

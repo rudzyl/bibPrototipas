@@ -40,6 +40,7 @@
                                 {{$book->bookAuthor->name}} {{$book->bookAuthor->surname}}
                             </div>
                             <div class="list-line_button">
+                                <a href="{{route('book.show',[$book])}}" class="btn btn-primary"> RODYTI </a>
                                 <a href="{{route('book.edit',[$book])}}" class="btn btn-primary"> KOREGUOTI </a>
                                 <form method="POST" action="{{route('book.destroy', [$book])}}">
                                     @csrf
