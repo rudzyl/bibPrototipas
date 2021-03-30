@@ -3,13 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-11">
             <div class="card">
                 <div class="card-header">
+                    {{-- filtravimas --}}
                     <h2> KNYGOS </h2>
                     <div class="make-inline">
                         <form action="{{route('book.index')}}" method="get" class="make-inline">
-                            <div class="form-group" class="make-inline">
+                            <div class="form-group make-inline">
                                 <label>Autorius: </label>
                                 <select class="form-control" name="author_id">
                                     <option value="0" disabled @if($filterBy==0) selected @endif> Pasirinkti autoriu</option>
@@ -19,11 +20,17 @@
                                     </option>
                                     @endforeach
                                 </select>
-                                <small class="form-text text-muted">Pasirinkti Autoriaus varda.</small>
+                            </div>
+                            <label class="form-check-label">Isrusiuoti pagal pavadinima:</label>
+                            <label class="form-check-label" for="sortASC">ASC</label>
+                            <div class="form-group make-inline column">
+                                <input type="radio" class="form-check-input" name="sort" value="asc" id="sortASC" @if($sortBy=='asc' ) checked @endif>
+                            </div>
+                            <label class="form-check-label" for="sortDESC">DESC</label>
+                            <div class="form-group make-inline column">
+                                <input type="radio" class="form-check-input" name="sort" value="desc" id="sortDESC" @if($sortBy=='desc' ) checked @endif>
                             </div>
                             <button type="submit" class="btn btn-primary">Filtruoti</button>
-                            <div class="form-group" class="make-inline">
-                                <input </div>
                         </form>
                         <a href="{{route('book.index')}}" class="btn btn-info">isvalyti filtra</a>
                     </div>

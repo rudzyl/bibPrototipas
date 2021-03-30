@@ -10945,6 +10945,30 @@ a.text-dark:focus {
 .list-line {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.list-line list-line_button {
+  display: flex;
+}
+
+.list-line list-line_button > * {
+  margin: 5px;
+}
+
+.list-line books {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-line books title {
+  font-weight: bold;
+}
+
+.list-line books author {
+  color: grey;
+  font-size: 80%;
+  font-style: italic;
 }
 
 .list-line .list-line_button {
@@ -10968,6 +10992,7 @@ a.text-dark:focus {
   flex-direction: column;
   height: 37px;
   justify-content: center;
+  align-items: 0 12px;
 }
 
 .make-inline select,

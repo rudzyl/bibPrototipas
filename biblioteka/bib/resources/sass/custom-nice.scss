@@ -1,7 +1,30 @@
 .list-line {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
+    & list-line_button {
+        display: flex;
+
+        &>* {
+            margin: 5px;
+        }
+    }
+
+    & books {
+        display: flex;
+        flex-direction: column;
+
+        & title {
+            font-weight: bold;
+        }
+
+        & author {
+            color: grey;
+            font-size: 80%;
+            font-style: italic;
+        }
+    }
 
     .list-line_button {
         display: flex;
@@ -17,6 +40,9 @@
     }
 }
 
+
+
+
 .make-inline {
     display: flex;
     justify-content: space-between;
@@ -26,6 +52,8 @@
         flex-direction: column;
         height: 37px;
         justify-content: center;
+        align-items: 0 12px;
+
     }
 
     select,
@@ -37,4 +65,5 @@
     &.form-group {
         margin-bottom: 0px;
     }
+
 }

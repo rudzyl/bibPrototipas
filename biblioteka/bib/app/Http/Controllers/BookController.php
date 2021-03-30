@@ -28,10 +28,21 @@ class BookController extends Controller
         else {
             $books = Book::all();
         }
+        //rusiavimas, kolekcijos 
+        if($request->sort && 'asc' == $request->sort) {
+            $books = $books->sortBy('title');
+            $sortBy = 'asc';
+        }
+        else if($request->sort && 'desc' == $request->sort) {
+            $books = $books->sortByDesc('title');
+            $sortBy = 'desc';
+        }
+
         return view('book.index', [
             'books' => $books, 
             'authors' => $authors,
-            'filterBy'=>$filterBy ?? 0
+            'filterBy'=>$filterBy ?? 0,
+            'sortBy' => $sortBy ?? ''
             ]);
     }
 
