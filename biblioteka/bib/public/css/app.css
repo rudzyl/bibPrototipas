@@ -10948,24 +10948,24 @@ a.text-dark:focus {
   align-items: center;
 }
 
-.list-line list-line_button {
+.list-linelist-line_button {
   display: flex;
 }
 
-.list-line list-line_button > * {
+.list-linelist-line_button > * {
   margin: 5px;
 }
 
-.list-line books {
+.list-line_books {
   display: flex;
   flex-direction: column;
 }
 
-.list-line books title {
+.list-line_books_title {
   font-weight: bold;
 }
 
-.list-line books author {
+.list-line_books_author {
   color: grey;
   font-size: 80%;
   font-style: italic;

@@ -41,10 +41,15 @@
                         @foreach ($books as $book)
                         <li class="list-group-item list-line">
                             <div class="list-line_books">
-                                {{$book->title}}
-                            </div>
-                            <div class="list-line_name">
-                                {{$book->bookAuthor->name}} {{$book->bookAuthor->surname}}
+                                <div class="list-line_title">
+                                    {{$book->title}}
+                                </div>
+                                <div class="list-line_author">
+                                    {{$book->bookAuthor->name}} {{$book->bookAuthor->surname}}
+                                </div>
+                                <div class="list-line_author">
+                                    <b>Leidejas:</b>{{$book->bookPublisher->title}}
+                                </div>
                             </div>
                             <div class="list-line_button">
                                 <a href="{{route('book.show',[$book])}}" class="btn btn-primary"> RODYTI </a>

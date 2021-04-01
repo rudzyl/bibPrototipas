@@ -41,7 +41,15 @@
                             </select>
                             <small class="form-text text-muted">Pasirinkti Autoriaus varda.</small>
                         </div>
-
+                        <div class="form-group">
+                            <label>Leidykla: </label>
+                            <select name="publisher_id">
+                                @foreach ($publishers as $publisher)
+                                <option value="{{$publisher->id}}">{{$publisher->title}}</option>
+                                @endforeach
+                            </select>
+                            <small class="form-text text-muted">Pasirinkti Leidyklos pavadinima.</small>
+                        </div>
                         @csrf
                         <button type="submit" class="btn btn-primary">Prideti</button>
                     </form>
