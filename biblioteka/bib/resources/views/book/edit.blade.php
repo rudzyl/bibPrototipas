@@ -43,6 +43,17 @@
                             </select>
                             <small class="form-text text-muted">Pasirinkti Autoriaus varda.</small>
                         </div>
+                        <div class="form-group">
+                            <label>Leidykla: </label>
+                            <select name="publisher_id">
+                                @foreach ($publishers as $publisher)
+                                <option value="{{$publisher->id}}" @if($publisher->id == $book->publisher_id) selected @endif>
+                                    {{$publisher->title}}
+                                </option>
+                                @endforeach
+                            </select>
+                            <small class="form-text text-muted">Pasirinkti Ledejo pavadinima.</small>
+                        </div>
 
                         @csrf
                         <button type="submit" class="btn btn-primary">Koreguoti</button>
