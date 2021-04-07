@@ -10,7 +10,7 @@
 
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{route('author.store')}}">
+                    <form method="POST" action="{{route('author.store')}}" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Name: </label>
                             <input type="text" class="form-control" name="author_name" value="{{old('author_name')}}">
@@ -20,6 +20,11 @@
                             <label>Surname: </label>
                             <input type="text" class="form-control" name="author_surname" value="{{old('author_surname')}}">
                             <small class="form-text text-muted">Irasyti nauja Autorio pavarde.</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Portret: </label>
+                            <input type="file" class="form-control" name="author_portret">
+                            <small class="form-text text-muted">Ikelti Autoriaus portreta.</small>
                         </div>
 
                         @csrf

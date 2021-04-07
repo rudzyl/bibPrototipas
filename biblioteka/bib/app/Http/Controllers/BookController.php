@@ -24,11 +24,14 @@ class BookController extends Controller
         $authors = Author::all();
         //filtravimo dalis 
         if($request->author_id) {
-            $books = Book::where('author_id', $request->author_id)->get();
+            // $books = Book::where('author_id', $request->author_id)->get(); jei nebutu paginatoriaus
+            $books = Book::where('author_id', $request->author_id)->paginate(3);
             $filterBy = $request->author_id;
+            $books->appends(['author_id'=>$request->author_id]); //tam kad butu galima filtre paginuoti
         }
         else {
-            $books = Book::all();
+            // $books = Book::all();
+            $books = Book::paginate(3);
         }
         //rusiavimas, kolekcijos 
         if($request->sort && 'asc' == $request->sort) {

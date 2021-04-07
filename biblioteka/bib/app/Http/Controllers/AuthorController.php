@@ -134,8 +134,14 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        if($author->authorBooks->count()){
+        if($author->authorBooks->count() !==0){
             return redirect()->back()->with('info_message', 'Autorius turi knygu, negalima istrinti.');
+        }
+        
+        $addedLink = 'http://localhost/bibPrototipas/biblioteka/bib/public/img/'; //pridetas link
+        $imgName = str_replace($addedLink, '',$author->portret); //prideta istrinam
+        if(file_exists(public_path('img').'/'.$imgName) && is_file(public_path('img').'/'.$imgName)) {
+            unlink(public_path('img').'/'.$imgName);
         }
         $author->delete();
         return redirect()->route('author.index')->with('info_message', 'Sekmingai ištrintas.');

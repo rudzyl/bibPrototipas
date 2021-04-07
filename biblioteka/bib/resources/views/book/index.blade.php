@@ -55,7 +55,8 @@
                                 <a href="{{route('book.show',[$book])}}" class="btn btn-primary"> RODYTI </a>
                                 <a href="{{route('book.edit',[$book])}}" class="btn btn-primary"> KOREGUOTI </a>
                                 <a href="{{route('book.pdf',[$book])}}" class="btn btn-info"> PDF </a>
-                                <form method="POST" action="{{route('book.destroy', [$book])}}">
+                                {{-- kad atsirastu lentele ar tikrai norite trinti? class=book-delete --}}
+                                <form method="POST" data-book-id="{{$book->id}}" class="book-delete" action="{{route('book.destroy', [$book])}}">
                                     @csrf
                                     <button type="submit" class="btn btn-danger">ISTRINTI</button>
                                 </form>
@@ -63,6 +64,11 @@
                         </li>
                         @endforeach
                     </ul>
+                    @if(!$sortBy)
+                    <div class="pagrinator-container">
+                        {{$books->onEachSide(2)->links()}}
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

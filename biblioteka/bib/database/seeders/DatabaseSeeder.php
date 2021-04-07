@@ -23,12 +23,13 @@ class DatabaseSeeder extends Seeder
          $faker = Faker::create('lt_LT');
          $authors = 10;
          $publishers = 10;
-         $books = 150;
+         $books = 15;
 
          foreach(range(1, $authors) as $_) {
              DB::table('authors')->insert([
                  'name' => $faker->firstName(),
                  'surname' => $faker->lastName(),
+                 'portret' => $faker->imageUrl(75,100),
              ]);
          }
          foreach(range(1, $publishers) as $_) {
