@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Author;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
+use PDF;
 
 class BookController extends Controller
 {
@@ -131,5 +132,11 @@ class BookController extends Controller
     {
         $book->delete();
        return redirect()->route('book.index');
+    }
+
+    public function pdf(Book $book)
+    {
+        $pdf = PDF::loadView('book.pdf', ['book'=>$book]); //standartinis view
+        return $pdf->download('book-id'.$book->id.'.pdf'); //pdf failo pavadinimas
     }
 }
